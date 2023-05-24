@@ -5,21 +5,25 @@
     <head>
         <meta charset="UTF-8" />
         <title>Livros</title>
+        <link href="/css/bootstrap.min.css" rel="stylesheet" />
     </head>
     <body>
+        <div class="container">
         <h1>Livros</h1>
-        <table>
-            <tr>
-                <th>Id</th>
-                <th>Titulo</th>
-            </tr>
-            <c:forEach var="item" items="${livros}">
+            <a href="/livro/insert" class="btn btn-primary">Novo Livro</a>
+            <table class="table">
                 <tr>
-                    <td>${item.id}</td>
-                    <td>${item.titulo}</td>
+                    <th>Id</th>
+                    <th>Titulo</th>
                 </tr>
-            </c:forEach>
-        </table>
+                <c:forEach var="item" items="${livros}">
+                    <tr>
+                        <td>${item.id}</td>
+                        <td>${item.titulo}</td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </div>
     </body>
 </html>
 
