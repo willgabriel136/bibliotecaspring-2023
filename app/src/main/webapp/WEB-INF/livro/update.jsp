@@ -3,16 +3,17 @@
 <html lang="pt-br">
     <head>
         <meta charset="UTF-8" />
-        <title>Novo Livro</title>
+        <title>Editar Livro</title>
         <link href="/css/bootstrap.min.css" rel="stylesheet" />
     </head>
     <body>
         <div class="container">
-            <h1>Novo Livro</h1>
-            <form action="/livro/insert" method="post">
+            <h1>Editar Livro</h1>
+            <form action="/livro/update" method="post">
+                <input type="hidden" name="id" value="${livro.id}" />
                 <div class="form-group">
                     <label for="titulo">Título:</label>
-                    <input type="text" name="titulo" class="form-control" />
+                    <input type="text" name="titulo" class="form-control" value="${livro.titulo}" />
                 </div>
                 <br />
                 <a href="/livro/list" class="btn btn-primary" >Voltar</a>

@@ -3,20 +3,18 @@
 <html lang="pt-br">
     <head>
         <meta charset="UTF-8" />
-        <title>Novo Livro</title>
+        <title>Remover Livro</title>
         <link href="/css/bootstrap.min.css" rel="stylesheet" />
     </head>
     <body>
         <div class="container">
-            <h1>Novo Livro</h1>
-            <form action="/livro/insert" method="post">
-                <div class="form-group">
-                    <label for="titulo">Título:</label>
-                    <input type="text" name="titulo" class="form-control" />
-                </div>
+            <h1>Remover Livro</h1>
+            <p>Tem certeza que deseja remover o livro ${livro.titulo} ?</p>
+            <form action="/livro/delete" method="post">
+                <input type="hidden" name="id" value="${livro.id}" />
                 <br />
                 <a href="/livro/list" class="btn btn-primary" >Voltar</a>
-                <button type="submit" class="btn btn-success">Salvar</button>
+                <button type="submit" class="btn btn-danger">Excluir</button>
             </form>
         </div>
     </body>

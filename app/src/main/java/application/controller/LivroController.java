@@ -1,5 +1,7 @@
 package application.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,9 +35,45 @@ public class LivroController {
         Livro livro = new Livro();
         livro.setTitulo(titulo);
 
-
-
         livroRepo.save(livro);
+        return "redirect:/livro/list";
+    }
+
+    @RequestMapping("/update")
+    public String update(Model model, @RequestParam("id") int id) {
+        Optional<Livro> livro = livroRepo.findById(id);
+
+        if(livro.isPresent()) {
+            model.addAttribute("livro", livro.get());
+            return "/livro/update";
+        }
+
+        return "redirect:/livro/list";
+    }
+
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public String update(
+        @RequestParam("id") int id,
+        @RequestParam("titulo") String titulo) {
+        Optional<Livro> livro = livroRepo.findById(id);
+
+        if(livro.isPresent()) {
+            livro.get().setTitulo(titulo);
+            livroRepo.save(livro.get());
+        }
+
+        return "redirect:/livro/list";
+    }
+
+    @RequestMapping("/delete")
+    public String delete(Model model, @RequestParam("id") int id) {
+        Optional<Livro> livro = livroRepo.findById(id);
+
+        if(livro.isPresent()) {
+            model.addAttribute("livro", livro.get());
+            return "/livro/delete";
+        }
+
         return "redirect:/livro/list";
     }
 }
