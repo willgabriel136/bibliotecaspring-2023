@@ -76,4 +76,11 @@ public class LivroController {
 
         return "redirect:/livro/list";
     }
+
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    public String delete(@RequestParam("id") int id) {
+        livroRepo.deleteById(id);
+
+        return "redirect:/livro/list";
+    }
 }
