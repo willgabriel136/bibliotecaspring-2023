@@ -15,7 +15,6 @@ import application.model.LivroRepository;
 @Controller
 @RequestMapping("/livro")
 public class LivroController {
-
     @Autowired
     private LivroRepository livroRepo;
 
