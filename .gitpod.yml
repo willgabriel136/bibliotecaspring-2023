@@ -1,5 +1,4 @@
-image:
-  file: .gitpod.Dockerfile
+image: gitpod/workspace-java-17
 
 tasks:
-  - init: bash script.sh
+  - init: "docker-compose up -d"
