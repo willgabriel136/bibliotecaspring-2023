@@ -11,12 +11,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import application.model.Livro;
 import application.model.LivroRepository;
+import application.model.GeneroRepository;
 
 @Controller
 @RequestMapping("/livro")
 public class LivroController {
     @Autowired
     private LivroRepository livroRepo;
+    @Autowired
+    private GeneroRepository generoRepo;
 
     @RequestMapping("/list")
     public String list(Model model) {
@@ -25,7 +28,8 @@ public class LivroController {
     }
 
     @RequestMapping("/insert")
-    public String insert() {
+    public String insert(Model model) {
+        model.addAttribute("generos", generoRepo.findAll());
         return "/livro/insert";
     }
 
