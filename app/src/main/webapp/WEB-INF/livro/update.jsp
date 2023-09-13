@@ -15,9 +15,19 @@
                     <label for="titulo">Título:</label>
                     <input type="text" name="titulo" class="form-control" value="${livro.titulo}" />
                 </div>
+
                 <div class="form-group">
                     <label for="isbn">ISBN:</label>
                     <input type="text" name="isbn" class="form-control" value="${livro.isbn}" />
+                </div>
+
+                <div class="form-group">
+                    <label for="genero">Gênero</label>
+                    <select name="genero" class="form-control">
+                        <c:forEach var="g" items="${generos}">
+                            <option ${livro.genero.id == g.id ? "selected" : ""} value=${g.nome}</option>
+                        </c:forEach>
+                    </select>
                 </div>
                 <br />
                 <a href="/livro/list" class="btn btn-primary" >Voltar</a>

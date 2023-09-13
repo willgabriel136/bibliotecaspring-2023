@@ -21,6 +21,12 @@ public class Livro {
     @JoinColumn(name="id_genero")
     private Genero genero;
 
+    public Genero getGenero() {
+        return genero;
+    }
+    public void setGenero(Genero genero) {
+        this.genero = genero;
+    }
     public int getId() {
         return id;
     }
